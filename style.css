@@ -65,6 +65,28 @@ main {
     overflow: hidden;
 }
 
+.card {
+    display: block;
+    /* Assurez-vous que la balise <a> se comporte comme un bloc */
+    text-decoration: none;
+    /* Optionnel: supprime le soulignement des liens */
+}
+
+.card article {
+    pointer-events: auto;
+    /* Active les événements de pointeur sur <article> */
+}
+
+.card {
+    pointer-events: none;
+    /* Désactive les événements de pointeur sur la balise <a> */
+}
+
+.card * {
+    pointer-events: auto;
+    /* Réactive les événements de pointeur pour les enfants de <a> */
+}
+
 .card article {
     padding: 1rem;
 }
@@ -133,6 +155,7 @@ main {
     0% {
         box-shadow: 0 0 20px rgba(0, 255, 221, 0.8);
     }
+
     100% {
         box-shadow: 0 0 30px rgb(0, 255, 255);
     }
@@ -144,4 +167,40 @@ footer {
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    animation: slideIn 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
 }
