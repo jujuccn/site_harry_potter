@@ -6,9 +6,52 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Galerie</title>
    <link rel="stylesheet" href="style.css">
+   <script>document.addEventListener("DOMContentLoaded", function () {
+         let index = 0;
+         const images = document.querySelectorAll(".gallery-image");
+         const totalImages = images.length;
+
+         function showImage(i) {
+            images.forEach((img, idx) => {
+               img.style.display = idx === i ? "block" : "none";
+            });
+         }
+
+         function nextImage() {
+            index = (index + 1) % totalImages;
+            showImage(index);
+         }
+
+         function prevImage() {
+            index = (index - 1 + totalImages) % totalImages;
+            showImage(index);
+         }
+
+         document.querySelector(".next").addEventListener("click", nextImage);
+         document.querySelector(".prev").addEventListener("click", prevImage);
+
+         // Défilement automatique
+         setInterval(nextImage, 3000);
+
+         // Initialisation
+         showImage(index);
+      });</script>
+   <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
 </head>
 
 <body>
+   <header>
+      <h1>Bienvenue sur le site des fans de Harry Potter</h1>
+      <nav>
+         <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">À propos de moi</a></li>
+            <li><a href="#">Actualités</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="#">Contact</a></li>
+         </ul>
+      </nav>
+   </header>
    <div class="gallery-container">
       <div class="gallery-wrapper">
          <div class="gallery-image" style="background-image: url('images/hogwarts.jpg');"></div>
@@ -23,10 +66,16 @@
          <div class="gallery-image" style="background-image: url('images/silvertrio.jpg');"></div>
          <div class="gallery-image" style="background-image: url('images/goldentrio.jpg');"></div>
          <div class="gallery-image" style="background-image: url('images/goldentrio2.jpg');"></div>
-         <div class="gallery-image" style="background-image: url('images/Fred_and_George_Weasley_\(HBP_promo\)_2[1].jpg');"></div>
+         <div class="gallery-image"
+            style="background-image: url('images/Fred_and_George_Weasley_\(HBP_promo\)_2[1].jpg');"></div>
          <div class="gallery-image" style="background-image: url('images/familleweasley.jpg');"></div>
       </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
    </div>
+   <footer>
+      <p>&copy; 2024 Harry Potter Fan Site by Juju_ccn. Tous droits réservés.</p>
+   </footer>
 </body>
 
 </html>
